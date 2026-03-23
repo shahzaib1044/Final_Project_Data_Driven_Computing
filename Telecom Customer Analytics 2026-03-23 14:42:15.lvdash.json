@@ -1389,6 +1389,31 @@
             "width": 12,
             "height": 6
           }
+        },
+        {
+          "widget": {
+            "name": "4b0c23dc",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4b831c04",
+                  "disaggregated": true
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {}
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 108,
+            "width": 6,
+            "height": 6
+          }
         }
       ],
       "pageType": "PAGE_TYPE_CANVAS",
