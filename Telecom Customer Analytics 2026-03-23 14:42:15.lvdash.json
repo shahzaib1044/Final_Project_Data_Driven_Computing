@@ -1,0 +1,1404 @@
+{
+  "datasets": [
+    {
+      "name": "4b831c04",
+      "displayName": "gold_active_customers_parent_channel",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_active_customers_parent_channel"
+      ]
+    },
+    {
+      "name": "b41defae",
+      "displayName": "gold_active_customers_region",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_active_customers_region"
+      ]
+    },
+    {
+      "name": "bbcd4284",
+      "displayName": "gold_predictions",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_predictions"
+      ]
+    },
+    {
+      "name": "35f03f9d",
+      "displayName": "gold_quality_sales",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_quality_sales"
+      ]
+    },
+    {
+      "name": "3655b4f7",
+      "displayName": "gold_quality_sales_parent_channel",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_quality_sales_parent_channel"
+      ]
+    },
+    {
+      "name": "f57b06d5",
+      "displayName": "gold_quality_sales_region",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_quality_sales_region"
+      ]
+    },
+    {
+      "name": "2f088fa0",
+      "displayName": "gold_segments_parent_channel",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_segments_parent_channel"
+      ]
+    },
+    {
+      "name": "4c22802b",
+      "displayName": "gold_segments_region",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.gold_segments_region"
+      ]
+    },
+    {
+      "name": "ffd12606",
+      "displayName": "telecom_silver",
+      "queryLines": [
+        "SELECT * FROM final_project.telecom_data.telecom_silver"
+      ],
+      "columns": [
+        {
+          "displayName": "First Day Recharge (Num)",
+          "description": "First_Day_Recharge cast to numeric",
+          "expression": "CAST(`First_Day_Recharge` AS DOUBLE)"
+        },
+        {
+          "displayName": "Ninety Day Recharge (Num)",
+          "description": "ninety_day_recharge cast to numeric",
+          "expression": "CAST(`ninety_day_recharge` AS DOUBLE)"
+        }
+      ]
+    }
+  ],
+  "pages": [
+    {
+      "name": "b428bd14",
+      "displayName": "Untitled page",
+      "layout": [
+        {
+          "widget": {
+            "name": "gold-active-customers-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "b41defae",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "sum(active_users)",
+                      "expression": "SUM(`active_users`)"
+                    },
+                    {
+                      "name": "sum(total_users)",
+                      "expression": "SUM(`total_users`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "frame": {
+                "showTitle": true,
+                "title": "Gold Active Customers by Region"
+              },
+              "mark": {
+                "colors": [
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 1
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 2
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 3
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 4
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 5
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 6
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 7
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 8
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 9
+                  },
+                  {
+                    "themeColorType": "visualizationColors",
+                    "position": 10
+                  }
+                ]
+              },
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(active_users)"
+                      },
+                      {
+                        "fieldName": "sum(total_users)"
+                      }
+                    ]
+                  },
+                  "secondary": {
+                    "fields": []
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 0,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "0988c984",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "bbcd4284",
+                  "fields": [
+                    {
+                      "name": "sum(prediction)",
+                      "expression": "SUM(`prediction`)"
+                    },
+                    {
+                      "name": "prediction",
+                      "expression": "`prediction`"
+                    },
+                    {
+                      "name": "count(msisdn)",
+                      "expression": "COUNT(`msisdn`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "prediction",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(msisdn)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "sum(prediction)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 6,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "79bf4127",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "f57b06d5",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "sum(quality_sales)",
+                      "expression": "SUM(`quality_sales`)"
+                    },
+                    {
+                      "name": "sum(total_sales)",
+                      "expression": "SUM(`total_sales`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(quality_sales)"
+                      }
+                    ]
+                  },
+                  "secondary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(total_sales)"
+                      }
+                    ]
+                  },
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 12,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "26abfa49",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4c22802b",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "sum(high_value)",
+                      "expression": "SUM(`high_value`)"
+                    },
+                    {
+                      "name": "sum(medium_value)",
+                      "expression": "SUM(`medium_value`)"
+                    },
+                    {
+                      "name": "sum(low_value)",
+                      "expression": "SUM(`low_value`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "frame": {
+                "title": "Customer Segments by Region",
+                "showTitle": true
+              },
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(high_value)",
+                        "displayName": "High Value"
+                      },
+                      {
+                        "fieldName": "sum(medium_value)",
+                        "displayName": "Medium Value"
+                      },
+                      {
+                        "fieldName": "sum(low_value)",
+                        "displayName": "Low Value"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    }
+                  },
+                  "secondary": {
+                    "fields": [],
+                    "scale": {
+                      "type": "quantitative"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 18,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "87feaba6",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "3655b4f7",
+                  "fields": [
+                    {
+                      "name": "parent_channel",
+                      "expression": "`parent_channel`"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "avg(quality_rate)",
+                      "expression": "AVG(`quality_rate`)"
+                    }
+                  ],
+                  "cubeGroupingSets": {
+                    "sets": [
+                      {
+                        "fieldNames": [
+                          "parent_channel"
+                        ]
+                      },
+                      {
+                        "fieldNames": [
+                          "region"
+                        ]
+                      }
+                    ]
+                  },
+                  "disaggregated": false,
+                  "orders": [
+                    {
+                      "direction": "ASC",
+                      "expression": "`parent_channel`"
+                    },
+                    {
+                      "direction": "ASC",
+                      "expression": "`region`"
+                    }
+                  ]
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Quality Rate by Parent Channel & Region",
+                "showTitle": true
+              },
+              "widgetType": "pivot",
+              "encodings": {
+                "rows": [
+                  {
+                    "fieldName": "parent_channel",
+                    "displayTotal": false,
+                    "displayName": "Parent Channel"
+                  }
+                ],
+                "columns": [
+                  {
+                    "fieldName": "region",
+                    "displayTotal": false,
+                    "displayName": "Region"
+                  }
+                ],
+                "cell": {
+                  "type": "multi-cell",
+                  "fields": [
+                    {
+                      "fieldName": "avg(quality_rate)",
+                      "cellType": "text",
+                      "displayName": "Quality Rate",
+                      "style": {
+                        "type": "color-scale",
+                        "backgroundColor": {
+                          "scale": {
+                            "type": "quantitative",
+                            "colorRamp": {
+                              "mode": "scheme",
+                              "scheme": "orangered"
+                            }
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 24,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "cad45be1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "customer_lifetime_days",
+                      "expression": "`customer_lifetime_days`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Customer Lifetime Days Distribution by Region",
+                "showTitle": true
+              },
+              "widgetType": "histogram",
+              "encodings": {
+                "x": {
+                  "fieldName": "customer_lifetime_days",
+                  "displayName": "Customer Lifetime Days",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "displayName": "Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "legend": {
+                    "position": "right"
+                  },
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 30,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "e262f4ac",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "SALE_TYPE",
+                      "expression": "`SALE_TYPE`"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Sale Type Distribution Across Regions",
+                "showTitle": true
+              },
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "displayName": "Count",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "SALE_TYPE",
+                  "legend": {
+                    "position": "right"
+                  },
+                  "displayName": "Sale Type",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 36,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "6f143cf1",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "sum(total_recharge_90d)",
+                      "expression": "SUM(`total_recharge_90d`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Recharge Amount Distribution Across Regions Over Time",
+                "showTitle": true
+              },
+              "mark": {
+                "layout": "stack"
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "displayName": "Sale Date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "sum(total_recharge_90d)",
+                  "format": {
+                    "type": "number-plain",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "displayName": "Total Recharge (90d)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "legend": {
+                    "position": "right"
+                  },
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 42,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "7ec1fbf7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "countdistinct(msisdn)",
+                      "expression": "COUNT(DISTINCT `msisdn`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Daily Sales by Date",
+                "showTitle": true
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "displayName": "Sale Date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "countdistinct(msisdn)",
+                  "format": {
+                    "type": "number-plain",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "displayName": "Unique Customers",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": false
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 48,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "48ffc3d8",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "sum(First Day Recharge (Num))",
+                      "expression": "SUM(`First Day Recharge (Num)`)"
+                    },
+                    {
+                      "name": "sum(Ninety Day Recharge (Num))",
+                      "expression": "SUM(`Ninety Day Recharge (Num)`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 1,
+              "frame": {
+                "title": "First Day vs Ninety Day Recharge by Region",
+                "showTitle": true
+              },
+              "widgetType": "combo",
+              "encodings": {
+                "x": {
+                  "fieldName": "region",
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "primary": {
+                    "fields": [
+                      {
+                        "fieldName": "sum(First Day Recharge (Num))",
+                        "displayName": "First Day Recharge"
+                      },
+                      {
+                        "fieldName": "sum(Ninety Day Recharge (Num))",
+                        "displayName": "Ninety Day Recharge"
+                      }
+                    ],
+                    "scale": {
+                      "type": "quantitative"
+                    }
+                  },
+                  "secondary": {
+                    "fields": [],
+                    "scale": {
+                      "type": "quantitative"
+                    }
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 54,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "1d07045c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Gross Additions by First Active Date",
+                "showTitle": true
+              },
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "displayName": "First Active Date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(*)",
+                  "format": {
+                    "type": "number-plain",
+                    "decimalPlaces": {
+                      "type": "exact",
+                      "places": 0
+                    },
+                    "abbreviation": "compact"
+                  },
+                  "displayName": "Gross Additions",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 60,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "8bef699a",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "count(90_Days_ZR)",
+                      "expression": "COUNT(`90_Days_ZR`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "area",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(90_Days_ZR)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 66,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "d8c290ce",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "count(1~49)",
+                      "expression": "COUNT(`1~49`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(1~49)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 72,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "aec029b9",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "count(50~80)",
+                      "expression": "COUNT(`50~80`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(50~80)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical",
+                    "mappings": [
+                      {
+                        "value": "Central II",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 1
+                        }
+                      },
+                      {
+                        "value": "Central III",
+                        "color": {
+                          "themeColorType": "visualizationColors",
+                          "position": 2
+                        }
+                      }
+                    ]
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 78,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "8cfe05f7",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    },
+                    {
+                      "name": "first_active_date",
+                      "expression": "`first_active_date`"
+                    },
+                    {
+                      "name": "count(81+)",
+                      "expression": "COUNT(`81+`)"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "widgetType": "bar",
+              "encodings": {
+                "x": {
+                  "fieldName": "first_active_date",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "y": {
+                  "fieldName": "count(81+)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 84,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "ef3cf72c",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "ffd12606",
+                  "fields": [
+                    {
+                      "name": "count(*)",
+                      "expression": "COUNT(`*`)"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Activity Status Breakdown by Region",
+                "showTitle": true
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "count(*)",
+                  "scale": {
+                    "type": "quantitative"
+                  },
+                  "displayName": "Count"
+                },
+                "color": {
+                  "fieldName": "region",
+                  "legend": {
+                    "position": "right"
+                  },
+                  "displayName": "Region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 90,
+            "width": 12,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-high-value-by-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4c22802b",
+                  "fields": [
+                    {
+                      "name": "sum(high_value)",
+                      "expression": "SUM(`high_value`)"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "title": "Total high value by region",
+                "showTitle": true
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(high_value)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 102,
+            "width": 11,
+            "height": 6
+          }
+        },
+        {
+          "widget": {
+            "name": "total-low-value-by-region",
+            "queries": [
+              {
+                "name": "main_query",
+                "query": {
+                  "datasetName": "4c22802b",
+                  "fields": [
+                    {
+                      "name": "sum(low_value)",
+                      "expression": "SUM(`low_value`)"
+                    },
+                    {
+                      "name": "region",
+                      "expression": "`region`"
+                    }
+                  ],
+                  "disaggregated": false
+                }
+              }
+            ],
+            "spec": {
+              "version": 3,
+              "frame": {
+                "showDescription": false,
+                "showTitle": true,
+                "title": "Total Low Value By Region"
+              },
+              "widgetType": "pie",
+              "encodings": {
+                "angle": {
+                  "fieldName": "sum(low_value)",
+                  "scale": {
+                    "type": "quantitative"
+                  }
+                },
+                "color": {
+                  "fieldName": "region",
+                  "scale": {
+                    "type": "categorical"
+                  }
+                },
+                "label": {
+                  "show": true
+                }
+              }
+            }
+          },
+          "position": {
+            "x": 0,
+            "y": 96,
+            "width": 12,
+            "height": 6
+          }
+        }
+      ],
+      "pageType": "PAGE_TYPE_CANVAS",
+      "layoutVersion": "GRID_V1"
+    }
+  ],
+  "uiSettings": {
+    "theme": {
+      "widgetHeaderAlignment": "ALIGNMENT_UNSPECIFIED"
+    },
+    "applyModeEnabled": false
+  }
+}
